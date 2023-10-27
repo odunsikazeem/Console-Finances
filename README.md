@@ -9,6 +9,7 @@ N/A
 ## Usage
 
 The work demostrated here explained the importance of JavaScript & how it could be used to solve issues. 
+https://odunsikazeem.github.io/Console-Finances/
 
 
 ## Credit
