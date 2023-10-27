@@ -159,9 +159,9 @@ console.log("Net Total:" + netTotal );
 var ChangeIntotal = 0;
 
 for (var i = 1; i < finances.length; i++) {
-  var InitialProfitLoss = finances[i][1];
-  var presentProfitLoss = finances[i - 1][1];
-  var Difference = InitialProfitLoss - presentProfitLoss;
+  var InitialIncomestatement = finances[i][1];
+  var presentIncomestatement = finances[i - 1][1];
+  var Difference = InitialIncomestatement - presentIncomestatement;
   ChangeIntotal += Difference;
 }
 
@@ -175,9 +175,9 @@ var greatestIn = { revenue: 0, date: '' };
 var greatestDe = { revenue: 0, date: '' };
 
 for (var i = 1; i < finances.length; i++) {
-  var initialProfitLoss = finances[i][1];
-  var presentProfitLoss = finances[i - 1][1];
-  var change = initialProfitLoss - presentProfitLoss;
+  var InitialIncomestatement = finances[i][1];
+  var presentIncomestatement = finances[i - 1][1];
+  var change = InitialIncomestatement - presentIncomestatement;
   var date = finances[i][0];
 
   if (change > greatestIn.revenue) {
