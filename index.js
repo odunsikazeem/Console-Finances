@@ -86,3 +86,113 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+// The total number of months included in the dataset.
+var Months = [];
+var income = [];
+
+for(var i = 0; i < finances.length; i++) { 
+  Months.push(finances[i][0]);
+  income.push(finances[i][1]);
+}
+
+console.log('Months', Months);
+console.log('income', income);
+
+var totalMonths = Months.length;
+console.log("Total Months: " + totalMonths);
+
+// The net total amount of Profit/Losses over the entire period
+
+
+var posIncome = [];
+var negIncome = [];
+
+for (var i = 0; i < income.length; i++) {
+  if (income[i] > 0) {
+    posIncome.push(income[i]);
+  } else if (income[i] < 0) {
+    negIncome.push(income[i]);
+  }
+}
+
+console.log('Positive Income:', posIncome);
+console.log('Negative Income:', negIncome);
+
+
+var posIncomeSum = 0;
+
+for (var i = 0; i < posIncome.length; i++) {
+  posIncomeSum += posIncome[i];
+}
+
+console.log("Total Positive Income:" + posIncomeSum);
+
+var negIncomeSum = 0;
+
+for (var i = 0; i < negIncome.length; i++) {
+  negIncomeSum += negIncome[i];
+}
+
+console.log("Total Negative Income:" + negIncomeSum);
+
+
+var posIncomeSum = 0;
+var negIncomeSum = 0;
+
+for (var i = 0; i < posIncome.length; i++) {
+  posIncomeSum += posIncome[i];
+}
+
+for (var i = 0; i < negIncome.length; i++) {
+  negIncomeSum += negIncome[i];
+}
+
+var netTotal = negIncomeSum + posIncomeSum;
+
+console.log("Net Total:" + netTotal );
+
+// * The average of the **changes** in Profit/Losses over the entire period.
+//   * You will need to track what the total change in Profit/Losses are from month to month and then find the average.
+//   * (`Total/(Number of months - 1)`)
+
+var ChangeIntotal = 0;
+
+for (var i = 1; i < finances.length; i++) {
+  var InitialProfitLoss = finances[i][1];
+  var presentProfitLoss = finances[i - 1][1];
+  var Difference = InitialProfitLoss - presentProfitLoss;
+  ChangeIntotal += Difference;
+}
+
+var avChange = ChangeIntotal / (finances.length - 1);
+
+console.log("Average Change in Profit/Losses: " + avChange);
+
+// * The greatest increase in Profit/Losses (date and amount) over the entire period.
+
+var greatestIn = { revenue: 0, date: '' };
+var greatestDe = { revenue: 0, date: '' };
+
+for (var i = 1; i < finances.length; i++) {
+  var initialProfitLoss = finances[i][1];
+  var presentProfitLoss = finances[i - 1][1];
+  var change = initialProfitLoss - presentProfitLoss;
+  var date = finances[i][0];
+
+  if (change > greatestIn.revenue) {
+    greatestIn.revenue = change;
+    greatestIn.date = date;
+  } else if (change < greatestDe.revenue) {
+    greatestDe.revenue = change;
+    greatestDe.date = date;
+  }
+}
+
+console.log("Greatest Increase in Profit/Losses: " + greatestIn.date + " ($" + greatestIn.revenue + ")");
+console.log("Greatest Decrease in Profit/Losses: " + greatestDe.date + " ($" + greatestDe.revenue + ")");
+// * The greatest decrease in Profit/Losses (date and amount) over the entire period.
+
+
+
+
